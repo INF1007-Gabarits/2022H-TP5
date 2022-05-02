@@ -153,7 +153,7 @@ class TestMammifere(TestCase):
         except TypeError:
             self.fail("Le constructeur de Chat n'a pas été implanté correctement.")
 
-    def test_str(self):
+    def test_str_mammifere(self):
         terreur = Chat("Milo le terrible", LongueurPoils.COURTS, "Noir et blanc")
         attendu = "Le Chat Milo le terrible a 4 pattes et des poils COURTS."
         self.assertEqual(str(terreur), attendu,
@@ -267,13 +267,13 @@ class TestReptile(TestCase):
 
 
 class TestTikTok(TestCase):
-    def test_constructeur(self):
+    def test_constructeur_tiktok(self):
         try:
             TikTok("Toe Beans")
         except TypeError:
             self.fail("Le constructeur de TikTok n'a pas été implanté correctement.")
 
-    def test_attributs(self):
+    def test_attributs_tiktok(self):
         tiktok = TikTok("Toe Beans")
         self.assertTrue(hasattr(tiktok, 'titre'), "La classe TikTok n'a pas d'attribut public 'titre'.")
         self.assertTrue(hasattr(tiktok, 'musique'), "La classe TikTok n'a pas d'attribut public 'musique'.")
@@ -302,7 +302,7 @@ class TestTikTok(TestCase):
         self.assertGreater(tiktok2, tiktok1, msg="L'opérateur < n'a pas bien été surchargé.")
 
     @patch("tiktok.TikTok.vues")
-    def test_str(self, mock_vues):
+    def test_str_tiktok(self, mock_vues):
         tiktok = TikTok("Milo l'abeille essaye de manger le laptop d'un chargé de INF1007")
 
         # Syntaxe à ne pas reproduire à la maison
@@ -312,7 +312,7 @@ class TestTikTok(TestCase):
         self.assertEqual(str(tiktok), attendu,
                          msg="La représentation en string d'un TikTok n'est pas comme attendue.")
 
-    def test_vues(self):
+    def test_vues_tiktok(self):
         tiktok = TikTok("La magie des MagicMock")
 
         # Syntaxe à ne pas reproduire à la maison
@@ -328,13 +328,13 @@ class TestTikTok(TestCase):
 
 
 class TestCompteTikTok(TestCase):
-    def test_constructeur(self):
+    def test_constructeur_compte(self):
         try:
             CompteTikTok("NosAmisLesAnimaux")
         except TypeError:
             self.fail("Le constructeur de CompteTikTok n'a pas été implanté correctement.")
 
-    def test_attributs(self):
+    def test_attributs_compte(self):
         compte_tiktok = CompteTikTok("NosAmisLesAnimaux")
         self.assertTrue(hasattr(compte_tiktok, 'identifiant'),
                         "La classe CompteTikTok n'a pas d'attribut public 'identifiant'.")
@@ -342,13 +342,13 @@ class TestCompteTikTok(TestCase):
         self.assertTrue(hasattr(compte_tiktok, '_CompteTikTok__tiktoks'),
                         "La classe CompteTikTok n'a pas d'attribut privé 'tiktoks'.")
 
-    def test_len(self):
+    def test_len_compte(self):
         compte_tiktok = CompteTikTok("NosAmisLesAnimaux")
         # Syntaxe à ne pas reproduire à la maison
         compte_tiktok._CompteTikTok__tiktoks = [TikTok("Cookie est cute")]
         self.assertEqual(len(compte_tiktok), 1, msg="opérateur len est mal surchargé.")
 
-    def test_iadd(self):
+    def test_iadd_compte(self):
         compte_tiktok = CompteTikTok("NosAmisLesAnimaux")
         tiktok = TikTok("Cookie est encore une fois cute")
         compte_tiktok += tiktok
@@ -357,7 +357,7 @@ class TestCompteTikTok(TestCase):
         self.assertListEqual(compte_tiktok._CompteTikTok__tiktoks, [tiktok],
                              msg="opérateur += est mal surchargé.")
 
-    def test_vues(self):
+    def test_vues_compte(self):
         compte_tiktok = CompteTikTok("NosAmisLesAnimaux")
 
         # Syntaxe à ne pas reproduire à la maison
