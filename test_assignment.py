@@ -35,13 +35,13 @@ class TestMusique(TestCase):
 
 
 class TestFiltre(TestCase):
-    def test_attributs(self):
+    def test_attributs_filtre(self):
         filtre = Filtre("#NoFilter", 123456789)
         self.assertTrue(hasattr(filtre, 'nom'), "La classe Filtre n'a pas d'attribut public 'nom'.")
         self.assertTrue(hasattr(filtre, 'nb_utilisations'),
                         "La classe Filtre n'a pas d'attribut public 'nb_utilisations'.")
 
-    def test_score_viral(self):
+    def test_score_viral_filtre(self):
         filtre = Filtre("L'espèce de filtre qui montre si t'as une main stable", 9999999999)
         score_viral = filtre.score_viral()
         self.assertIsInstance(score_viral, int, msg="Filtre.score_viral doit être un int.")
@@ -120,7 +120,7 @@ class TestAnimal(TestCase):
         self.assertTrue(issubclass(Animal, ABC), "La classe Animal n'est pas abstraite")
         self.assertTrue(Animal.crier.__isabstractmethod__, "La méthode crier n'est pas abstraite")
 
-    def test_score_viral(self):
+    def test_score_viral_animal(self):
         terreur = Chat("Milo le terrible", LongueurPoils.COURTS, "Noir et blanc")
         accessoire1 = Accessoire("Costume d'abeille", 40, TypeAccessoire.VETEMENT)
         accessoire2 = Accessoire("Chapeau d'abeille", 50, TypeAccessoire.CHAPEAU)
